@@ -46,6 +46,11 @@ or create a .env file and add the following:
 OPENAI_API_KEY=your_api_key_here
 SECRET_KEY=your_secret_key_here ## This is used for flask
 ```
+scret key can be generated using the following code:
+```python
+import secrets
+print(secrets.token_hex(32))
+```
 
 Start the web server
 ```bash
