@@ -88,14 +88,6 @@ You can also use command line to redact a pdf:
 python main.py input.pdf output.pdf
 ```
 
-## How It Works
-
-1. **Text Extraction**: The tool extracts text content from the PDF document.
-2. **Language Detection**: It automatically detects the language of the document.
-3. **PII Detection**: Using OpenAI's API, the tool identifies various types of PII in the text.
-4. **Redaction**: The identified PII is completely removed from the PDF content, not just visually obscured.
-5. **Output**: A new PDF file is created with all PII redacted.
-
 ## Technical Approach & Architecture
 
 ### Architecture Overview
@@ -128,53 +120,19 @@ PDF PII Redactor is built with a modular, component-based architecture that sepa
    - Identifies the primary language
    - Helps optimize PII detection for specific languages
 
-### Technical Choices
+### Technical Implementation
 
 #### PDF Processing with PyMuPDF (fitz)
-We chose PyMuPDF for PDF manipulation because it provides:
-- Robust text extraction capabilities
-- Precise text search and location functionality
-- True redaction capabilities (not just visual masking)
-- Excellent performance with large documents
-- Active maintenance and good documentation
+We chose PyMuPDF for PDF manipulation because it provides robust text extraction, precise text search, true redaction capabilities, and excellent performance with large documents.
 
 #### PII Detection with OpenAI API
-We leverage OpenAI's API for PII detection because:
-- It provides state-of-the-art natural language understanding
-- Can identify complex PII patterns that rule-based systems might miss
-- Adapts to different languages and contexts
-- Can be prompted to identify specific types of PII
-- Offers high accuracy with minimal false negatives
+We leverage OpenAI's API for PII detection because it provides state-of-the-art language understanding, identifies complex PII patterns, adapts to different languages, and offers high accuracy with minimal false negatives.
 
-#### Language Detection
-The system uses langdetect to:
-- Automatically identify document language
-- Support multilingual documents
-- Optimize PII detection prompts for specific languages
-
-#### Web Interface
-The web interface is built with Flask, providing:
-- Simple file upload and processing
-- Model selection options
-- Secure file handling
-- Download of redacted documents
-
-### Implementation Details
-
-#### PII Detection Process
-1. Document text is extracted and segmented by page
-2. The language of the document is detected
-3. Text segments are sent to OpenAI's API with a specialized prompt
-4. The API returns structured data identifying PII instances
-5. Results are processed to map PII to exact positions in the PDF
-
-#### Redaction Workflow
-1. For each identified PII instance:
-   - The exact location in the PDF is determined
-   - A redaction annotation is applied
-   - The text is permanently removed (not just visually masked)
-2. A new PDF is created with all redactions applied
-3. Statistics are collected on the redaction process
+#### Processing Workflow
+1. **Text Extraction & Language Detection**: Document text is extracted, segmented by page, and its language is detected
+2. **PII Detection**: Text segments are sent to OpenAI's API with specialized prompts
+3. **Redaction Application**: For each identified PII instance, the exact location is determined and redaction is applied
+4. **Output Generation**: A new PDF is created with all redactions applied
 
 #### Security Considerations
 - No PII data is stored between processing steps
@@ -184,25 +142,9 @@ The web interface is built with Flask, providing:
 
 ### Design Decisions
 
-#### LLM-Based vs. Rule-Based Detection
-We chose an LLM-based approach over traditional rule-based systems because:
-- Rule-based systems require extensive maintenance of regex patterns
-- They struggle with context-dependent PII
-- They need language-specific rules for each supported language
-- LLMs understand context and nuance in ways rule-based systems cannot
+We chose an LLM-based approach over traditional rule-based systems because rule-based systems require extensive maintenance, struggle with context-dependent PII, and need language-specific rules for each supported language.
 
-#### Modular Architecture
-The system uses a modular design to:
-- Separate concerns for better maintainability
-- Allow for easy testing of individual components
-- Enable future extensions and improvements
-- Provide clear interfaces between components
-
-#### Stateless Processing
-Each document is processed independently:
-- No PII data is stored between requests
-- Temporary files are securely deleted
-- This enhances security and simplifies deployment
+The system uses a modular design and stateless processing to enhance security, maintainability, and simplify deployment.
 
 ### Future Enhancements
 
