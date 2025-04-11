@@ -92,20 +92,7 @@ print(f"Redacted {stats['redacted_items']} PII instances across {stats['pages_pr
 
 PDF PII Redactor is built with a modular, component-based architecture that separates concerns and provides a clean workflow:
 
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│                 │     │                 │     │                 │
-│  PDF Processor  │────▶│  PII Detector   │────▶│  PDF Redactor   │
-│                 │     │                 │     │                 │
-└────────┬────────┘     └────────┬────────┘     └────────┬────────┘
-         │                       │                       │
-         │                       │                       │
-         │                       ▼                       │
-         │              ┌─────────────────┐             │
-         └──────────────│  Language       │─────────────┘
-                        │  Detector       │
-                        └─────────────────┘
-```
+<img src="https://github.com/roshanrai1304/pdf-pii-redactor/blob/main/sample_images/architecture.png" alt="PDF PII Redactor Architecture" width="100%">
 
 ### Core Components
 
