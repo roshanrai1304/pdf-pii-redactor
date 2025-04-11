@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF PII Redactor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .flash-messages {
+            margin-bottom: 20px;
+        }
+        .flash-message {
+            padding: 10px;
+            background-color: #f44336;
+            color: white;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .info {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF PII Redactor</h1>
+    
+    <div class="container">
+        <h2>Upload a PDF to Redact PII</h2>
+        
+        {% if get_flashed_messages() %}
+        <div class="flash-messages">
+            {% for message in get_flashed_messages() %}
+            <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Select PDF File:</label>
+                <input type="file" id="file" name="file" accept=".pdf" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="model">Select OpenAI Model:</label>
+                <select id="model" name="model">
+                    <option value="gpt-4o">GPT-4o (Recommended)</option>
+                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Faster)</option>
+                </select>
+            </div>
+            
+            <button type="submit">Upload and Redact</button>
+        </form>
+        
+        <div class="info">
+            <h3>About PDF PII Redactor</h3>
+            <p>This tool automatically identifies and redacts personally identifiable information (PII) from PDF documents using OpenAI's API.</p>
+            <p>Supported PII types:</p>
+            <ul>
+                <li>Names</li>
+                <li>Email addresses</li>
+                <li>Phone numbers</li>
+                <li>Addresses</li>
+                <li>Credit card numbers</li>
+                <li>Dates of birth</li>
+            </ul>
+            <p><strong>Note:</strong> Your PDF must contain selectable text. Scanned image PDFs are not supported.</p>
+        </div>
+    </div>
+</body>
+</html> 

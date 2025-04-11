@@ -1,0 +1,6 @@
+.env
+example_pdfs/
+assignment.md
+venv/
+__pycache__/
+.pytest_cache/
