@@ -49,7 +49,7 @@ SECRET_KEY=your_secret_key_here ## This is used for flask
 
 Start the web server
 ```bash
-pdf-pii-redactor-web
+python web.py
 ```
 
 Access the web interface at http://localhost:5000
@@ -64,6 +64,9 @@ stats = redactor.redact_pdf("input.pdf", "output.pdf")
 # Print statistics
 print(f"Redacted {stats['redacted_items']} PII instances across {stats['pages_processed']} pages")
 ```
+
+![PDF Redaction Example](https://i.imgur.com/example.png)
+*Left: Original PDF with PII. Right: Redacted PDF with sensitive information removed.*
 
 ## How It Works
 
@@ -204,7 +207,7 @@ Each document is processed independently:
 
 ## Requirements
 
-- Python 3.8 or higher
+- Python 3.10 or higher
 - PyMuPDF (fitz)
 - OpenAI API key
 - Other dependencies listed in requirements.txt
