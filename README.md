@@ -65,8 +65,9 @@ stats = redactor.redact_pdf("input.pdf", "output.pdf")
 print(f"Redacted {stats['redacted_items']} PII instances across {stats['pages_processed']} pages")
 ```
 
-![PDF Redaction Example](https://i.imgur.com/example.png)
-*Left: Original PDF with PII. Right: Redacted PDF with sensitive information removed.*
+![Test Image](https://github.com/roshanrai1304/pdf-pii-redactor/sample_images/test.png)
+
+![Output Image](https://github.com/roshanrai1304/pdf-pii-redactor/sample_images/output.png)
 
 ## How It Works
 
