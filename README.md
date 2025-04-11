@@ -83,6 +83,11 @@ print(f"Redacted {stats['redacted_items']} PII instances across {stats['pages_pr
   </tr>
 </table>
 
+You can also use command line to redact a pdf:
+```bash
+python main.py input.pdf output.pdf
+```
+
 ## How It Works
 
 1. **Text Extraction**: The tool extracts text content from the PDF document.
