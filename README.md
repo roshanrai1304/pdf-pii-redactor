@@ -65,9 +65,18 @@ stats = redactor.redact_pdf("input.pdf", "output.pdf")
 print(f"Redacted {stats['redacted_items']} PII instances across {stats['pages_processed']} pages")
 ```
 
-![Test Image](https://github.com/roshanrai1304/pdf-pii-redactor/blob/main/sample_images/test.png)
+### Example Redaction
 
-![Output Image](https://github.com/roshanrai1304/pdf-pii-redactor/blob/main/sample_images/output.png)
+<table>
+  <tr>
+    <th>Original Document</th>
+    <th>Redacted Document</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/roshanrai1304/pdf-pii-redactor/blob/main/sample_images/test.png" alt="Original Document" width="100%"></td>
+    <td><img src="https://github.com/roshanrai1304/pdf-pii-redactor/blob/main/sample_images/output.png" alt="Redacted Document" width="100%"></td>
+  </tr>
+</table>
 
 ## How It Works
 
