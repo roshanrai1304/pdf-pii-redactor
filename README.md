@@ -123,10 +123,10 @@ PDF PII Redactor utilizes a modular, component-based architecture designed to pr
 ### Technical Implementation
 
 #### PDF Processing with PyMuPDF (fitz)
-We chose PyMuPDF for PDF manipulation because it provides robust text extraction, precise text search, true redaction capabilities, and excellent performance with large documents.
+It is using PyMuPDF for PDF manipulation because it provides robust text extraction, precise text search, true redaction capabilities, and excellent performance with large documents.
 
 #### PII Detection with OpenAI API
-We leverage OpenAI's API for PII detection because it provides state-of-the-art language understanding, identifies complex PII patterns, adapts to different languages, and offers high accuracy with minimal false negatives.
+It leverage OpenAI's API for PII detection because it provides state-of-the-art language understanding, identifies complex PII patterns, adapts to different languages, and offers high accuracy with minimal false negatives.
 
 #### Processing Workflow
 1. **Text Extraction & Language Detection**: Document text is extracted, segmented by page, and its language is detected
